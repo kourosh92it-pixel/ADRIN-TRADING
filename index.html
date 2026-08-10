@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آدرین تجارت باهر | پیشرو در صنعت سیمان</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font Vazir -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --primary-light: #2d2d44;
+            --primary-gradient: linear-gradient(135deg, #1a1a2e, #2d2d44, #4a1942);
+            --secondary: #e85d04;
+            --accent: #f48c06;
+            --orange-light: #faa307;
+            --light-bg: #f8f5f0;
+            --white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-light: #4a4a5a;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --bg-body: #f8f5f0;
+            --bg-section: #ffffff;
+            --text-color: #1a1a2e;
+            --card-bg: #ffffff;
+            --border-color: #e8e0d8;
+            --border-orange: #e85d04;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f0f1a;
+            --bg-section: #1a1a2e;
+            --text-color: #e8e0d8;
+            --card-bg: #1a1a2e;
+            --border-color: #2d2d44;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --light-bg: #1a1a2e;
+            --border-orange: #f48c06;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-section);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            color: white;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(232, 93, 4, 0.4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(20deg);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(232, 93, 4, 0.2);
+        }
+
+        [data-theme="dark"] .header.scrolled {
+            background: rgba(15, 15, 26, 0.97);
+            border-bottom: 1px solid rgba(232, 93, 4, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a1a2e, #e85d04);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        [data-theme="dark"] .logo h1 {
+            color: #e8e0d8;
+        }
+
+        .logo h1 span {
+            color: #e85d04;
+        }
+
+        .logo .logo-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        [data-theme="dark"] .nav-links a {
+            color: #c8c0b8;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #e85d04;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .menu-toggle {
+            color: #c8c0b8;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-section) 100%);
+            overflow: hidden;
+            padding-top: 80px;
+            transition: background 0.4s ease;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 93, 4, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 93, 4, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(232, 93, 4, 0.12);
+            color: #e85d04;
+            padding: 0.3rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(232, 93, 4, 0.2);
+        }
+
+        [data-theme="dark"] .hero-badge {
+            background: rgba(232, 93, 4, 0.2);
+            color: #f48c06;
+            border-color: rgba(232, 93, 4, 0.3);
+        }
+
+        .hero-badge i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .hero-content h1 {
+            color: #e8e0d8;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            padding-right: 1.2rem;
+            border-right: 4px solid #e85d04;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 550px;
+            font-size: 1.05rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(232, 93, 4, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 93, 4, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e85d04;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #e85d04;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .btn-outline {
+            color: #f48c06;
+            border-color: #f48c06;
+        }
+
+        .btn-outline:hover {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(232, 93, 4, 0.2);
+        }
+
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-img i {
+            font-size: 14rem;
+            color: #e85d04;
+            opacity: 0.85;
+            filter: drop-shadow(0 10px 30px rgba(232, 93, 4, 0.15));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        [data-theme="dark"] .hero-img i {
+            color: #f48c06;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            padding: 4rem 0;
+            background: var(--bg-body);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .stat-item:hover {
+            border-color: var(--border-orange);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .stat-item .number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 5rem 0;
+            transition: background 0.4s ease;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: #e8e0d8;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.05rem;
+        }
+
+        .section-bg {
+            background: var(--bg-section);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1.5;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="dark"] .about-text h2 {
+            color: #e8e0d8;
+        }
+
+        .about-text h2 i {
+            color: #e85d04;
+            margin-left: 10px;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .about-text .highlight-box {
+            background: var(--bg-section);
+            border-right: 4px solid #e85d04;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            transition: background 0.4s ease;
+        }
+
+        .about-text .highlight-box i {
+            color: #e85d04;
+            font-size: 1.2rem;
+        }
+
+        .about-text .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .about-text .info-grid .info-item {
+            background: var(--bg-section);
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            border-right: 3px solid #e85d04;
+            transition: background 0.4s ease;
+        }
+
+        .about-text .info-grid .info-item strong {
+            color: var(--primary);
+            display: block;
+            font-size: 0.85rem;
+        }
+
+        [data-theme="dark"] .about-text .info-grid .info-item strong {
+            color: #e8e0d8;
+        }
+
+        .about-text .info-grid .info-item span {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image i {
+            font-size: 12rem;
+            color: #e85d04;
+            opacity: 0.6;
+        }
+
+        /* ===== BOARD & TEAM ===== */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .board-card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .board-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-orange);
+        }
+
+        .board-card .avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1a1a2e, #e85d04);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.2rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.2);
+        }
+
+        .board-card h4 {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        [data-theme="dark"] .board-card h4 {
+            color: #e8e0d8;
+        }
+
+        .board-card .position {
+            color: #e85d04;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-orange);
+        }
+
+        .team-card .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1a1a2e, #e85d04);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 2.8rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(232, 93, 4, 0.2);
+        }
+
+        .team-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        [data-theme="dark"] .team-card h4 {
+            color: #e8e0d8;
+        }
+
+        .team-card .position {
+            color: #e85d04;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .team-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .products-tabs .tab-btn {
+            padding: 0.7rem 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .products-tabs .tab-btn {
+            color: #c8c0b8;
+            border-color: #2d2d44;
+        }
+
+        .products-tabs .tab-btn.active,
+        .products-tabs .tab-btn:hover {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            color: white;
+            border-color: #e85d04;
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            padding: 2.2rem 2rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-orange);
+        }
+
+        .product-card .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(232, 93, 4, 0.1), rgba(244, 140, 6, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 2rem;
+            color: #e85d04;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .icon-wrapper {
+            background: linear-gradient(135deg, #e85d04, #f48c06);
+            color: white;
+        }
+
+        .product-card .badge {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 0.8rem;
+        }
+
+        .badge-domestic {
+            background: rgba(232, 93, 4, 0.15);
+            color: #e85d04;
+        }
+
+        [data-theme="dark"] .badge-domestic {
+            background: rgba(232, 93, 4, 0.2);
+            color: #f48c06;
+        }
+
+        .badge-export {
+            background: rgba(26, 26, 46, 0.1);
+            color: #1a1a2e;
+        }
+
+        [data-theme="dark"] .badge-export {
+            background: rgba(200, 192, 184, 0.1);
+            color: #c8c0b8;
+        }
+
+        .product-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .product-card h3 {
+            color: #e8e0d8;
+        }
+
+        .product-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-info:hover {
+            border-color: var(--border-orange);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="dark"] .contact-info h3 {
+            color: #e8e0d8;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .contact-info .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info .info-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(232, 93, 4, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e85d04;
+            font-size: 1rem;
+        }
+
+        [data-theme="dark"] .contact-info .info-item i {
+            background: rgba(232, 93, 4, 0.15);
+            color: #f48c06;
+        }
+
+        .contact-form {
+            flex: 1.5;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form:hover {
+            border-color: var(--border-orange);
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="dark"] .contact-form h3 {
+            color: #e8e0d8;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--bg-body);
+            color: var(--text-color);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #e85d04;
+            box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.08);
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            color: #c8c0b8;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        [data-theme="dark"] .footer {
+            background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #8a8a9a;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a:hover {
+            color: #f48c06;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: #e85d04;
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.85rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-img i {
+                font-size: 10rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-text .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .hero-content .subtitle {
+                border-right: none;
+                padding-right: 0;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-img i {
+                font-size: 7rem;
+            }
+            .about-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text .highlight-box {
+                text-align: right;
+            }
+            .about-text .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+            .contact-grid {
+                flex-direction: column;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .products-tabs {
+                gap: 0.5rem;
+            }
+            .products-tabs .tab-btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .stat-item .number {
+                font-size: 2rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 1rem;
+                left: 1rem;
+            }
+        }
+
+        .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            position: absolute;
+            top: 70px;
+            right: 0;
+            left: 0;
+            padding: 1.8rem;
+            gap: 1.2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 20px 20px;
+            z-index: 999;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .mobile-menu a {
+            color: #c8c0b8;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== THEME TOGGLE ===== -->
+    <button class="theme-toggle" id="themeToggle" title="تغییر حالت روز/شب">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div>
+                    <h1>ADRIN <span>TRADING</span></h1>
+                    <div class="logo-sub">آدرین تجارت باهر</div>
+                </div>
+            </div>
+            <div class="menu-toggle" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#about">درباره ما</a></li>
+                <li><a href="#team">تیم مدیریت</a></li>
+                <li><a href="#board">هیئت مدیره</a></li>
+                <li><a href="#products">محصولات</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-bolt"></i> پیشرو در صنعت سیمان
+                    </div>
+                    <h1>ADRIN <span>TRADING</span></h1>
+                    <div class="subtitle">
+                        آدرین تجارت باهر | خلق ارزش با تولید محصول ممتاز سیمان سفید
+                    </div>
+                    <p>
+                        آدرین تجارت باهر در خط مقدم رشد سبز، با راه حل های نوآورانه و پایدار به ساخت و ساز،
+                        پیشرو در تولید کالاهایی بر پایه سیمان در ایران و منطقه می باشد.
+                    </p>
+                    <div class="btn-group">
+                        <a href="#about" class="btn-primary">
+                            <i class="fas fa-arrow-left"></i> بیشتر بدانید
+                        </a>
+                        <a href="#contact" class="btn-outline">
+                            <i class="fas fa-phone"></i> تماس بگیرید
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-img">
+                    <i class="fas fa-tower-broadcast"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATS ===== -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="number">۱۲%</div>
+                        <div class="label">سهم بازار صادراتی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">۳۷۳</div>
+                        <div class="label">ظرفیت کارخانه (تن در روز)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">۹</div>
+                        <div class="label">مقاصد صادراتی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">۱۴۰۵</div>
+                        <div class="label">سال ثبت شرکت</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <h2><i class="fas fa-building"></i> درباره آدرین تجارت باهر</h2>
+                    <p>
+                        شرکت آدرین تجارت باهر در تاریخ <strong>۱۴۰۵/۰۳/۲۰</strong> با شماره ثبت <strong>۹۷۳۰۷</strong>
+                        در اداره ثبت شرکتهای مشهد به ثبت رسیده است. حوزه فعالیت اصلی شرکت،
+                        <strong>عمده فروشی مصالح ساختمانی و واردات و صادرات</strong> آن می‌باشد.
+                    </p>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>📅 تاریخ ثبت</strong>
+                            <span>۱۴۰۵/۰۳/۲۰</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>📋 شماره ثبت</strong>
+                            <span>۹۷۳۰۷</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>📍 استان</strong>
+                            <span>خراسان رضوی</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>🏢 شهرستان</strong>
+                            <span>مشهد</span>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>آدرس مرکزی:</strong>
+                        استان خراسان رضوی، شهرستان مشهد، بلوار پیروزی، پیروزی ۳، رودکی ۱۲، پلاک ۵۷
+                    </div>
+
+                    <p>
+                        این شرکت با هدف تأمین مصالح ساختمانی با کیفیت و ارائه خدمات تخصصی در حوزه
+                        واردات و صادرات، فعالیت خود را آغاز نموده و همواره در تلاش است تا با ارائه
+                        محصولات با کیفیت و خدمات متمایز، نیازهای مشتریان را برآورده سازد.
+                    </p>
+
+                    <div class="highlight-box" style="border-right-color: #f48c06;">
+                        <i class="fas fa-trophy" style="color:#f48c06;"></i>
+                        <strong>چشم‌انداز:</strong> تبدیل شدن به یکی از برترین شرکت‌های فعال در حوزه
+                        تأمین مصالح ساختمانی و تجارت بین‌الملل در سطح کشور و منطقه
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BOARD ===== -->
+        <section class="section section-bg" id="board">
+            <div class="container">
+                <h2 class="section-title">هیئت <span>مدیره</span></h2>
+                <p class="section-sub">اعضای هیئت مدیره شرکت آدرین تجارت باهر</p>
+                <div class="board-grid">
+                    <div class="board-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>ابراهیم ساریان</h4>
+                        <div class="position">رئیس هیئت مدیره</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>علیرضا صداقت‌جو</h4>
+                        <div class="position">نایب رئیس هیئت مدیره</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>مریم عباسی</h4>
+                        <div class="position">عضو هیئت مدیره</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TEAM ===== -->
+        <section class="section" id="team">
+            <div class="container">
+                <h2 class="section-title">تیم <span>مدیریتی</span></h2>
+                <p class="section-sub">مدیران ارشد شرکت آدرین تجارت باهر</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>ابراهیم ساریان</h4>
+                        <div class="position">مدیرعامل</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>علیرضا صداقت‌جو</h4>
+                        <div class="position">مدیر بازرگانی</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                        <h4>مریم عباسی</h4>
+                        <div class="position">مدیر مالی</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRODUCTS ===== -->
+        <section class="section section-bg" id="products">
+            <div class="container">
+                <h2 class="section-title">محصولات <span>ما</span></h2>
+                <p class="section-sub">محصولات با کیفیت برای بازارهای داخلی و صادراتی</p>
+
+                <div class="products-tabs">
+                    <button class="tab-btn active" onclick="showProducts('all')">همه محصولات</button>
+                    <button class="tab-btn" onclick="showProducts('domestic')">فروش داخلی</button>
+                    <button class="tab-btn" onclick="showProducts('export')">فروش صادراتی</button>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- محصولات فروش داخلی -->
+                    <div class="product-card domestic">
+                        <div class="icon-wrapper"><i class="fas fa-tint"></i></div>
+                        <h3>سیمان سیاه</h3>
+                        <p>سیمان پرتلند تیپ ۲ و ۵، مناسب برای پروژه‌های عمرانی و ساختمانی</p>
+                        <span class="badge badge-domestic">فروش داخلی</span>
+                    </div>
+                    <div class="product-card domestic">
+                        <div class="icon-wrapper"><i class="fas fa-tint"></i></div>
+                        <h3>سیمان سفید</h3>
+                        <p>سیمان سفید با کیفیت ممتاز برای نمای ساختمان و فضاهای داخلی</p>
+                        <span class="badge badge-domestic">فروش داخلی</span>
+                    </div>
+                    <div class="product-card domestic">
+                        <div class="icon-wrapper"><i class="fas fa-mountain"></i></div>
+                        <h3>سنگ ساختمانی</h3>
+                        <p>انواع سنگ تراورتن، مرمریت و گرانیت برای نما و کف ساختمان</p>
+                        <span class="badge badge-domestic">فروش داخلی</span>
+                    </div>
+
+                    <!-- محصولات فروش صادراتی -->
+                    <div class="product-card export">
+                        <div class="icon-wrapper"><i class="fas fa-tint"></i></div>
+                        <h3>سیمان سیاه</h3>
+                        <p>سیمان پرتلند با استاندارد بین‌المللی، مناسب برای صادرات</p>
+                        <span class="badge badge-export">فروش صادراتی</span>
+                    </div>
+                    <div class="product-card export">
+                        <div class="icon-wrapper"><i class="fas fa-tint"></i></div>
+                        <h3>سیمان سفید</h3>
+                        <p>سیمان سفید سوپر با خلوص بالا، مناسب برای بازارهای جهانی</p>
+                        <span class="badge badge-export">فروش صادراتی</span>
+                    </div>
+                    <div class="product-card export">
+                        <div class="icon-wrapper"><i class="fas fa-mountain"></i></div>
+                        <h3>سنگ ساختمانی</h3>
+                        <p>سنگ‌های با کیفیت بالا برای صادرات به کشورهای همسایه</p>
+                        <span class="badge badge-export">فروش صادراتی</span>
+                    </div>
+                    <div class="product-card export">
+                        <div class="icon-wrapper"><i class="fas fa-cube"></i></div>
+                        <h3>محصولات تزریق پلاستیک</h3>
+                        <p>محصولات پلیمری و تزریق پلاستیک با کیفیت بالا برای صنایع مختلف</p>
+                        <span class="badge badge-export">فروش صادراتی</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section class="section" id="contact">
+            <div class="container">
+                <h2 class="section-title">تماس با <span>ما</span></h2>
+                <p class="section-sub">برای اطلاعات بیشتر با ما در ارتباط باشید</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3><i class="fas fa-store" style="color:#e85d04;"></i> اطلاعات تماس</h3>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>۰۵۱-۳۸۴۵۶۷۸۹</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@adrintajaretbaher.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مشهد، بلوار پیروزی، پیروزی ۳، رودکی ۱۲، پلاک ۵۷</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>شنبه تا چهارشنبه: ۹ صبح تا ۱۷</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3><i class="fas fa-paper-plane" style="color:#e85d04;"></i> ارسال پیام</h3>
+                        <form>
+                            <input type="text" placeholder="نام و نام خانوادگی">
+                            <input type="email" placeholder="ایمیل">
+                            <input type="tel" placeholder="شماره تماس">
+                            <textarea placeholder="پیام شما..."></textarea>
+                            <button type="submit" class="btn-primary" style="width:100%; justify-content:center; border:none;">
+                                ارسال پیام <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fas fa-industry" style="color:#f48c06;"></i> ADRIN TRADING</h4>
+                    <p style="font-size:0.9rem; opacity:0.7;">آدرین تجارت باهر | پیشرو در تولید سیمان سفید با کیفیت ممتاز</p>
+                </div>
+                <div>
+                    <h4>لینک‌های سریع</h4>
+                    <a href="#home">خانه</a>
+                    <a href="#about">درباره ما</a>
+                    <a href="#team">تیم مدیریت</a>
+                    <a href="#board">هیئت مدیره</a>
+                    <a href="#products">محصولات</a>
+                    <a href="#contact">تماس با ما</a>
+                </div>
+                <div>
+                    <h4>ارتباط با ما</h4>
+                    <a href="#"><i class="fas fa-phone"></i> ۰۵۱-۳۸۴۵۶۷۸۹</a>
+                    <a href="#"><i class="fas fa-envelope"></i> info@adrintajaretbaher.com</a>
+                    <div class="footer-social" style="margin-top:0.8rem;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© ۱۴۰۴ تمامی حقوق متعلق به شرکت آدرین تجارت باهر می‌باشد.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== HEADER SCROLL =====
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== MOBILE MENU =====
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-menu');
+        });
+
+        document.querySelectorAll('.mobile-menu a, .nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-menu');
+            });
+        });
+
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', newTheme);
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ===== PRODUCT TABS =====
+        function showProducts(type) {
+            const products = document.querySelectorAll('.product-card');
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const activeTab = document.querySelector(`.tab-btn[onclick="showProducts('${type}')"]`);
+            if (activeTab) activeTab.classList.add('active');
+
+            products.forEach(product => {
+                if (type === 'all') {
+                    product.style.display = 'block';
+                } else if (type === 'domestic') {
+                    product.style.display = product.classList.contains('domestic') ? 'block' : 'none';
+                } else if (type === 'export') {
+                    product.style.display = product.classList.contains('export') ? 'block' : 'none';
+                }
+            });
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    window.scrollTo({
+                        top: target.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
